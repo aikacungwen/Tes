@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elegant Fullscreen Video Player</title>
+  <!-- Tambahkan pustaka Plyr -->
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.6.4/plyr.css" />
+  <script src="https://cdn.plyr.io/3.6.4/plyr.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Menghilangkan scroll pada body */
+      background-color: #000; /* Warna latar belakang hitam untuk video */
+    }
+
+    #video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Mengatur z-index agar video tetap di belakang elemen lainnya */
+    }
+
+    #video-player {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Menyesuaikan ukuran video agar mengisi seluruh area */
+    }
+  </style>
+</head>
+<body>
+  <!-- Gunakan Plyr untuk Pemutar Video -->
+  <div id="video-container">
+    <video id="video-player" playsinline controls crossorigin>
+      <source src="https://peertube.otakufarms.com/download/videos/cc46ae29-c147-4a8b-958e-b60003f5ae11-720.mp4" type="video/mp4">
+      <!-- Tambahkan track untuk subtitle -->
+      <track kind="captions" src="path/to/your-subtitle.vtt" srclang="en" label="English">
+      Your browser does not support the video element.
+    </video>
+  </div>
+  <script>
+    // Inisialisasi Plyr
+    const player = new Plyr("#video-player", {
+      controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'download', 'fullscreen']
+    });
+  </script>
+</body>
+</html>
